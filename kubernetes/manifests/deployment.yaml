@@ -1,19 +1,12 @@
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: db1000n
-
----
+# part of https://github.com/Arriven/db1000n/blob/main/kubernetes/manifests/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db1000n
-  namespace: db1000n
   labels:
     app: db1000n
 spec:
-  replicas: 1
+  replicas: 5
   selector:
     matchLabels:
       app: db1000n
@@ -28,8 +21,7 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              memory: "512Mi"
               cpu: "500m"
             limits:
-              memory: "2048Mi"
-              cpu: "2"
+              memory: "512Mi"
+              cpu: "1"
